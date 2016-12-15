@@ -6,7 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -15,6 +16,7 @@
             android:gravity="center"
             android:layout_margin="2dp">
             <TextView
+                android:id="@+id/site_china"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="国内"
@@ -24,9 +26,9 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
-                android:background="@drawable/site_red_btn"
-                />
+                android:background="@drawable/site_red_btn" />
             <TextView
+                android:id="@+id/site_haiwai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="海外"
@@ -39,6 +41,7 @@
                 android:background="@drawable/site_white_btn"/>
         </LinearLayout>
         <ImageView
+            android:id="@+id/exit_site"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/site_icon_jam"
@@ -114,10 +117,10 @@
                 android:textSize="24sp"
                 android:textColor="@color/black"
                 android:background="@drawable/kuang_grey"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:paddingRight="25dp"
-                android:paddingLeft="25dp"/>
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

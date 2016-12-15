@@ -1,13 +1,11 @@
 package com.example.administrator.iwillbe.fragment;
 
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.iwillbe.R;
+import com.example.administrator.iwillbe.Site;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +28,7 @@ import java.util.List;
  * Created by Administrator on 2016/12/12.
  */
 public class Homepage extends Fragment {
+    TextView homepage_top_diqu;
     TextView popuper_fuwu;
     TextView popuper_xuqiu;
     ListView listView;
@@ -62,10 +63,11 @@ public class Homepage extends Fragment {
         listView.addHeaderView(view1);
 
         gridview_homepage = (GridView) view1.findViewById(R.id.gridview_homepage);
+        homepage_top_diqu = (TextView) view1.findViewById(R.id.homepage_top_diqu);
         gridview_homepage.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,250));
 
         image_daohang_top= (ImageView) view1.findViewById(R.id.image_daohang_top);
-
+        homepage_top_diqu.setOnClickListener(onClickListener);
         image_daohang_top.setOnClickListener(onClickListener);
 
         list = getData();
@@ -142,6 +144,7 @@ public class Homepage extends Fragment {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Intent intent;
             switch (v.getId()){
                 case R.id.image_daohang_top:
                     getPopupwindow();
@@ -152,6 +155,11 @@ public class Homepage extends Fragment {
                 case R.id.popuper_xuqiu:
                     Toast.makeText(context,"需求被点击了",Toast.LENGTH_SHORT).show();
                     break;
+                case R.id.homepage_top_diqu:
+                    intent = new Intent(context, Site.class);
+                    startActivity(intent);
+                    break;
+
             }
         }
     };
