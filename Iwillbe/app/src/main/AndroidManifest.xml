@@ -15,6 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".XuquiActivity"/>
+        <activity android:name=".SheziActivity"/>
+        <activity android:name=".Site"/>
     </application>
 
 </manifest>
