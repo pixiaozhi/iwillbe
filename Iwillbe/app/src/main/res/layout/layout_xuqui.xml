@@ -9,6 +9,7 @@
         android:orientation="horizontal"
         android:layout_margin="10dp">
         <ImageView
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/classify_return"

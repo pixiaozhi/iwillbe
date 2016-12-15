@@ -19,7 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.iwillbe.R;
+import com.example.administrator.iwillbe.ServeAttestation;
 import com.example.administrator.iwillbe.Site;
+import com.example.administrator.iwillbe.XuquiActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -150,10 +152,12 @@ public class Homepage extends Fragment {
                     getPopupwindow();
                     break;
                 case R.id.popuper_fuwu:
-                    Toast.makeText(context,"服务被点击了",Toast.LENGTH_SHORT).show();
+                    intent = new Intent(context, ServeAttestation.class);
+                    startActivity(intent);
                     break;
                 case R.id.popuper_xuqiu:
-                    Toast.makeText(context,"需求被点击了",Toast.LENGTH_SHORT).show();
+                    intent = new Intent(context, XuquiActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.homepage_top_diqu:
                     intent = new Intent(context, Site.class);

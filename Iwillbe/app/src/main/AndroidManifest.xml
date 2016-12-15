@@ -15,9 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".XuquiActivity"/>
-        <activity android:name=".SheziActivity"/>
-        <activity android:name=".Site"/>
+        <activity android:name=".XuquiActivity"/><!--发布需求页面-->
+        <activity android:name=".SheziActivity"/><!--设置页面-->
+        <activity android:name=".Site"/><!--地点页面-->
+        <activity android:name=".ServeAttestation"/><!--实名认证页面-->
+        <activity android:name=".ChangpingXiangqingAvtivity"/><!--产品详情页面-->
+        <activity android:name=".PayActivity"/><!--支付页面-->
+        <activity android:name=".fragment.ListviewActivity"/>
+
     </application>
 
 </manifest>
