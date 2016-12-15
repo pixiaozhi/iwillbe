@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/daohang_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="right"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/back_kuang">
+        <TextView
+            android:id="@+id/popuper_fuwu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布服务"
+            android:textColor="@color/white"
+            android:layout_gravity="right"
+            android:textSize="16sp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:alpha="0.3"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/popuper_xuqiu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布需求"
+            android:textColor="@color/white"
+            android:layout_gravity="right"
+            android:textSize="16sp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"/>
+    </LinearLayout>
+
+</LinearLayout>

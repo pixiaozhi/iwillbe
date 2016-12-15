@@ -23,6 +23,11 @@
 
         <activity android:name=".turnserver.TurnServerActivity"/><!--成为服务者页面-->
         <activity android:name=".turnserver.IssueServerActivity"/><!--类型选择页面-->
+
+        <activity android:name=".XuquiActivity"/>
+        <activity android:name=".SheziActivity"/>
+        <activity android:name=".Site"/>
+
     </application>
 
 </manifest>

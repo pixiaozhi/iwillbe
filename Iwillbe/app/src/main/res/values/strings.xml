@@ -49,4 +49,5 @@
     <string name="turn_real_name">完成实名认证，您的服务才能上架出售。您可以选择以下方式进行认证</string>
     <string name="id_card_approve">身份证认证</string>
     <string name="issue_server">发布服务</string>
+    <string name="importe">请输入</string>
 </resources>

@@ -105,7 +105,7 @@ public class LonginActivity extends Activity {
     TextWatcher passwordWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-          //  Toast.makeText(LonginActivity.this, "请输入6-16位的密码", Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(LonginActivity.this, "请输入6-16位的密码", Toast.LENGTH_SHORT).show();
         }
 
         @Override
