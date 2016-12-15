@@ -267,11 +267,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="立即预约"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:background="@color/red"
             android:gravity="center"
-            android:padding="20dp"
-            />
+            android:padding="10dp"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 </RelativeLayout>
