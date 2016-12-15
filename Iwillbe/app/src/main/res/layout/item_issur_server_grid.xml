@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/issue_server_grid_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="设计"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+       android:drawablePadding="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="20dp"
+        android:drawableTop="@mipmap/serve_icon"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"/>
+
+</LinearLayout>
