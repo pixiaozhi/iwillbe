@@ -8,7 +8,7 @@ public class PersonHomepage {
     String userName;
     String time;
     String introText;
-    String introimag[];
+    String introimag[]={"http://127.0.0.1/Application/Home/Controller/mipmap/home-icon-seven.png"};
     String comment[];
     String reply[];
 

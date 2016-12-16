@@ -5,10 +5,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,7 +27,10 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import uitl.Setdata;
 
 /**
  * Created by Administrator on 2016/12/12.
@@ -31,11 +39,21 @@ public class PersonHomepageAdapter extends BaseAdapter {
     Context context;
     ArrayList<PersonHomepage> list;
     LayoutInflater layoutInflater;
-
-    public PersonHomepageAdapter(Context context, ArrayList<PersonHomepage> list) {
+    String nameList;
+    String toNameList;
+    String contentList;
+    int position = -1;
+    private int mTouchItemPosition = -1;
+    //private final HashMap<Integer, String> mData;
+    private OnChangedTextListener onChangedTextListener;
+    //
+    public PersonHomepageAdapter(Context context, ArrayList<PersonHomepage> list,String nameList,String toNameList,String contentList) {
         this.context = context;
         this.list = list;
         layoutInflater = LayoutInflater.from(context);
+        this.nameList = nameList;
+        this.toNameList = toNameList;
+        this.contentList = contentList;
     }
 
     @Override
@@ -53,69 +71,96 @@ public class PersonHomepageAdapter extends BaseAdapter {
         return i;
     }
 
+    ViewHolder viewHolder = null;
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHoder viewHoder = null;
+        position = i;
         if (view == null) {
-            viewHoder = new ViewHoder();
+            viewHolder = new ViewHolder();
             view = layoutInflater.inflate(R.layout.item_person_homepage, null);
-            viewHoder.headImag = (ImageView) view.findViewById(R.id.head_imag);
-            viewHoder.personName = (TextView) view.findViewById(R.id.person_name);
-            viewHoder.personTime = (TextView) view.findViewById(R.id.person_time);
-            viewHoder.detaiclarsText = (TextView) view.findViewById(R.id.detaiclars_text);
-            viewHoder.gridImage = (GridView) view.findViewById(R.id.grid_imag);
-            viewHoder.commentLinear = (LinearLayout) view.findViewById(R.id.comment_linear);
-            view.setTag(viewHoder);
+            viewHolder.headImag = (ImageView) view.findViewById(R.id.head_imag);
+            viewHolder.personName = (TextView) view.findViewById(R.id.person_name);
+            viewHolder.personTime = (TextView) view.findViewById(R.id.person_time);
+            viewHolder.detaiclarsText = (TextView) view.findViewById(R.id.detaiclars_text);
+//            viewHolder.gridImage = (GridView) view.findViewById(R.id.grid_imag);
+            viewHolder.commentLinear = (LinearLayout) view.findViewById(R.id.comment_linearLayout);
+            viewHolder.commentEdit = (EditText) view.findViewById(R.id.comment_edit);
+            viewHolder.sendBtn = (TextView) view.findViewById(R.id.send_btn);
+            view.setTag(viewHolder);
+
         }
         PersonHomepage personHomepage = list.get(i);
         //头像
-        view.setTag(viewHoder);
+        viewHolder= (ViewHolder) view.getTag();
+        viewHolder.commentEdit.setTag(position);
+        viewHolder.sendBtn.setTag(position);
+        viewHolder.commentLinear.setTag(position);
         Headhandler headhandler = new Headhandler();
-        headhandler.setViewHoder(viewHoder);
+        headhandler.setViewHolder(viewHolder);
         HeadThred headThred = new HeadThred();
         headThred.setMyHandler(headhandler);
         headThred.setIamgeURL(personHomepage.getImagUrl());
         headThred.start();
 
-        viewHoder.personName.setText(personHomepage.getUserName());
-        viewHoder.personName.setText(personHomepage.getTime());
-        viewHoder.personName.setText(personHomepage.getIntroText());
+//        viewHoder.personName.setText(personHomepage.getUserName());
+//        viewHoder.personName.setText(personHomepage.getTime());
+//        viewHoder.personName.setText(personHomepage.getIntroText());
+        /**
+         * 解决焦点问题
+         * 当editView获取焦点时,listview会重新绘制,致使editView的焦点光标失去
+         */
+        if (mTouchItemPosition == i) {
+            viewHolder.commentEdit.requestFocus();
+            viewHolder.commentEdit.setSelection(viewHolder.commentEdit.getText().length());
+        } else {
+            viewHolder.commentEdit.clearFocus();
+        }
+
+        viewHolder.commentEdit.addTextChangedListener(textWatcher);
+        viewHolder.sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                addcomment();
+//                viewHolder.commentEdit.setText("");
+//                notifyDataSetChanged();
+            }
+        });
+
+
+
         //发表集合
         String introImag[] = personHomepage.getIntroimag();
         String intro[] = null;
         for(int k = 0; k < introImag.length; k++){
             if (introImag.length > 9){
 
-
             }
         }
         IntroIamgHandler introIamgHandler = new IntroIamgHandler();
-        introIamgHandler.setViewHoder(viewHoder);
+        introIamgHandler.setViewHolder(viewHolder);
         IntroIamgThread introIamgThread = new IntroIamgThread();
         introIamgThread.setIntroIamgHandler(introIamgHandler);
         introIamgThread.setIntroIamgURL(introImag);
         introIamgThread.start();
 
-        String comment[] = personHomepage.getComment();
-        for (int j = 0; j < comment.length; j++){
-            TextView textView = new TextView(context);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            textView.setText(comment[i]);
-            viewHoder.commentLinear.addView(textView, layoutParams);
-        }
         return view;
     }
 
-    class ViewHoder {
+    class ViewHolder{
+        TextView sendBtn;
         ImageView headImag;
         TextView personName;
         TextView personTime;
         TextView detaiclarsText;
         GridView gridImage;
         LinearLayout commentLinear;
-
+        EditText commentEdit;
+        MyTextChangeWatch mTextWatcher;
+        //记录position,防止数据复用时,错乱
+        public void upDataPosition(int position) {
+            mTextWatcher.upDataPosition(position);
+        }
     }
 
     //个人空间头像加载图片
@@ -146,26 +191,38 @@ public class PersonHomepageAdapter extends BaseAdapter {
             }
         }
     }
+
+    public void addcomment(){
+        TextView textView = new TextView(context);
+        textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        Setdata setdata = new Setdata(context,textView,nameList,toNameList,contentList);
+        setdata.mSetdata();
+        if(viewHolder.commentLinear.getTag()==viewHolder.sendBtn.getTag()){
+            viewHolder.commentLinear.addView(textView);
+        }
+        notifyDataSetChanged();
+    }
+
     class Headhandler extends Handler {
-        ViewHoder viewHoder;
+        ViewHolder viewHolder;
         Bitmap bitmap;
         public void setBitmap(Bitmap bitmap) {
             this.bitmap = bitmap;
         }
 
-        public void setViewHoder(ViewHoder viewHoder) {
-            this.viewHoder = viewHoder;
+        public void setViewHolder(ViewHolder viewHoder) {
+            this.viewHolder = viewHoder;
         }
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (bitmap != null) {
-                viewHoder.headImag.setImageBitmap(bitmap);
+                viewHolder.headImag.setImageBitmap(bitmap);
             }
         }
     }
-
 
     //    发表图片加载
     class IntroIamgThread extends Thread {
@@ -196,14 +253,15 @@ public class PersonHomepageAdapter extends BaseAdapter {
             }
         }
     }
+
     class IntroIamgHandler extends Handler{
-        ViewHoder viewHoder;
+        ViewHolder viewHolder;
         Bitmap introIamgBitmap;
         public void setIntroIamgBitmap(Bitmap introIamgBitmap){
             this.introIamgBitmap = introIamgBitmap;
         }
-        public void setViewHoder(ViewHoder viewHoder){
-            this.viewHoder = viewHoder;
+        public void setViewHolder(ViewHolder viewHoder){
+            this.viewHolder = viewHoder;
         }
 
         @Override
@@ -215,4 +273,57 @@ public class PersonHomepageAdapter extends BaseAdapter {
             }
         }
     }
+
+    TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            contentList=editable.toString();
+            Log.i("===",""+contentList);
+        }
+    };
+
+    class MyTextChangeWatch implements TextWatcher {
+        private int position;
+
+        public void upDataPosition(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            //mData.put(position, s.toString());
+            contentList=s.toString();
+            if(onChangedTextListener !=null){
+                //使用回调将数据传递出去,进行数据检测
+                onChangedTextListener.onChangedTextListener(position, s.toString());
+            }
+        }
+    }
+    public void setOnChangedTextListener(OnChangedTextListener onChangedTextListener) {
+        this.onChangedTextListener = onChangedTextListener;
+    }
+    interface OnChangedTextListener {
+        void onChangedTextListener(int position, String str);
+    }
+
 }

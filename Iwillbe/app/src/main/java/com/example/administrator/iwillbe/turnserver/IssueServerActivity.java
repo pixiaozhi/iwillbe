@@ -10,11 +10,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
-
 import com.example.administrator.iwillbe.R;
-import com.nostra13.universalimageloader.utils.L;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 

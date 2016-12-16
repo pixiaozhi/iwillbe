@@ -52,27 +52,49 @@
         android:text="战争就是我们生活的必须品，只是你不这么理解而已"
         android:textSize="15sp"
         android:textColor="@color/black"/>
-        <GridView
-            android:id="@+id/grid_imag"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:numColumns="3"
-            android:scrollbars="none"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@mipmap/discover_img_three"/>
+        <!--<GridView-->
+            <!--android:id="@+id/grid_imag"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="200dp"-->
+            <!--android:numColumns="3"-->
+            <!--android:scrollbars="none"/>-->
         <LinearLayout
-            android:id="@+id/comment_linear"
+            android:id="@+id/comment_linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"/>
 
-        <EditText
-            android:id="@+id/comment_edit"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="评论"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:padding="5dp"
-            android:background="@drawable/homepage_person_edit"/>
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/comment_edit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="评论"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:padding="5dp"
+                android:background="@drawable/homepage_person_edit" />
+
+            <TextView
+                android:id="@+id/send_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发送"
+                android:layout_marginLeft="4dp"
+                android:padding="7dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/register_button_re"/>
+        </LinearLayout>
 
 
 

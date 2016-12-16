@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login.LonginActivity"><!--主入口-->
+        <activity android:name=".person.PersonHomepageActivity"
+            android:windowSoftInputMode="adjustPan"><!--主入口-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +20,7 @@
         <activity android:name=".login.RegisterActivity"/><!--注册页面-->
         <activity android:name=".login.SetPassword"/><!--修改页面-->
 
-        <activity android:name=".person.PersonHomepageActivity"/><!--个人主页页面-->
+        <!--<activity android:name=".person.PersonHomepageActivity"/>&lt;!&ndash;个人主页页面&ndash;&gt;-->
 
         <activity android:name=".turnserver.TurnServerActivity"/><!--成为服务者页面-->
         <activity android:name=".turnserver.IssueServerActivity"/><!--类型选择页面-->
