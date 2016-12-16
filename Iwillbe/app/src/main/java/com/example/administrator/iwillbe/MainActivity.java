@@ -130,6 +130,7 @@ public class MainActivity extends FragmentActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+                //点击首页
                 case R.id.homepage:
                     viewPager.setCurrentItem(0);
                     homepage1.setTextColor(getResources().getColor(R.color.red));
@@ -137,6 +138,7 @@ public class MainActivity extends FragmentActivity {
                     find.setTextColor(getResources().getColor(R.color.homepage_black));
                     mine.setTextColor(getResources().getColor(R.color.homepage_black));
                     break;
+                //点击发现
                 case R.id.find:
                     viewPager.setCurrentItem(1);
                     homepage1.setTextColor(getResources().getColor(R.color.homepage_black));
@@ -144,6 +146,7 @@ public class MainActivity extends FragmentActivity {
                     find.setTextColor(getResources().getColor(R.color.red));
                     mine.setTextColor(getResources().getColor(R.color.homepage_black));
                     break;
+                //点击消息
                 case R.id.massage:
                     viewPager.setCurrentItem(2);
                     homepage1.setTextColor(getResources().getColor(R.color.homepage_black));
@@ -151,6 +154,7 @@ public class MainActivity extends FragmentActivity {
                     find.setTextColor(getResources().getColor(R.color.homepage_black));
                     mine.setTextColor(getResources().getColor(R.color.homepage_black));
                     break;
+                //点击我的
                 case R.id.mine:
                     viewPager.setCurrentItem(3);
                     homepage1.setTextColor(getResources().getColor(R.color.homepage_black));

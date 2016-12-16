@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,6 +23,8 @@ import com.example.administrator.iwillbe.R;
 import com.example.administrator.iwillbe.ServeAttestation;
 import com.example.administrator.iwillbe.Site;
 import com.example.administrator.iwillbe.XuquiActivity;
+import com.example.administrator.iwillbe.turnserver.IssueServerActivity;
+import com.example.administrator.iwillbe.turnserver.TurnServerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,8 +69,59 @@ public class Homepage extends Fragment {
 
         gridview_homepage = (GridView) view1.findViewById(R.id.gridview_homepage);
         homepage_top_diqu = (TextView) view1.findViewById(R.id.homepage_top_diqu);
-        gridview_homepage.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,250));
+//        gridview_homepage.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,450));
 
+        gridview_homepage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("====",""+position);
+                Log.i("====",""+id);
+                Intent intent;
+                switch (position){
+                    case 0:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 4:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 5:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 6:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 7:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 8:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 9:
+                        intent = new Intent(context,IssueServerActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+
+            }
+        });
         image_daohang_top= (ImageView) view1.findViewById(R.id.image_daohang_top);
         homepage_top_diqu.setOnClickListener(onClickListener);
         image_daohang_top.setOnClickListener(onClickListener);
@@ -167,4 +221,5 @@ public class Homepage extends Fragment {
             }
         }
     };
+
 }

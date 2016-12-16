@@ -3,10 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listview_find"
-        android:dividerHeight="2dp"/>
 
+    <com.example.administrator.iwillbe.homepageviewgroup.LGNineGrideView
+        android:id="@+id/lalal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.example.administrator.iwillbe.homepageviewgroup.LGNineGrideView>
 </LinearLayout>
