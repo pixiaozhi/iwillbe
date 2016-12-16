@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.iwillbe">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
     <application
         android:allowBackup="true"
@@ -8,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".person.PersonHomepageActivity"
+        <activity android:name=".login.LonginActivity"
             android:windowSoftInputMode="adjustPan"><!--主入口-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,18 +18,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".XuquiActivity"/><!--发布需求页面-->
+        <activity android:name=".SheziActivity"/><!--设置页面-->
+        <activity android:name=".Site"/><!--地点页面-->
+        <activity android:name=".ServeAttestation"/><!--实名认证页面-->
+        <activity android:name=".ChangpingXiangqingAvtivity"/><!--产品详情页面-->
+        <activity android:name=".PayActivity"/><!--支付页面-->
+        <activity android:name=".fragment.ListviewActivity"/>
         <activity android:name=".login.RegisterActivity"/><!--注册页面-->
         <activity android:name=".login.SetPassword"/><!--修改页面-->
 
-        <!--<activity android:name=".person.PersonHomepageActivity"/>&lt;!&ndash;个人主页页面&ndash;&gt;-->
-
+        <activity android:name=".person.PersonHomepageActivity"/><!--个人主页页面-->
         <activity android:name=".turnserver.TurnServerActivity"/><!--成为服务者页面-->
         <activity android:name=".turnserver.IssueServerActivity"/><!--类型选择页面-->
 
-        <activity android:name=".XuquiActivity"/>
-        <activity android:name=".SheziActivity"/>
-        <activity android:name=".Site"/>
+
 
     </application>
 

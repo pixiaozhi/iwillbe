@@ -33,17 +33,22 @@ public class FindFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_find,null);
         listView = (ListView) view.findViewById(R.id.listview_find);
-        serent = (TextView) view.findViewById(R.id.serent);
-        need = (TextView) view.findViewById(R.id.need);
-        view_one = view.findViewById(R.id.view_one);
-        view_two = view.findViewById(R.id.view_two);
 
-        serent.setOnClickListener(onClickListener);
-        need.setOnClickListener(onClickListener);
         context = getActivity();
         list = getData();
         FindAdapater findAdapater = new FindAdapater(context,list);
         listView.setAdapter(findAdapater);
+//        视图转换器
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        View view1 = layoutInflater.inflate(R.layout.layout_find_top,null);
+        listView.addHeaderView(view1);
+        serent = (TextView) view1.findViewById(R.id.serent);
+        need = (TextView) view1.findViewById(R.id.need);
+        view_one = view1.findViewById(R.id.view_one);
+        view_two = view1.findViewById(R.id.view_two);
+
+        serent.setOnClickListener(onClickListener);
+        need.setOnClickListener(onClickListener);
         return view;
     }
     public List<FindView> getData(){
@@ -60,12 +65,14 @@ public class FindFragment extends Fragment {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
+                //点击服务
                 case R.id.serent:
                     serent.setTextColor(getResources().getColor(R.color.black));
                     need.setTextColor(getResources().getColor(R.color.need_grey));
                     view_one.setVisibility(View.VISIBLE);
                     view_two.setVisibility(View.INVISIBLE);
                     break;
+                //点击需求
                 case R.id.need:
                     serent.setTextColor(getResources().getColor(R.color.need_grey));
                     need.setTextColor(getResources().getColor(R.color.black));

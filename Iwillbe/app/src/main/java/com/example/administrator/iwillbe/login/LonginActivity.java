@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.administrator.iwillbe.MainActivity;
 import com.example.administrator.iwillbe.R;
 
 import java.util.regex.Matcher;
@@ -52,6 +53,7 @@ public class LonginActivity extends Activity {
         registerBtton.setOnClickListener(onClickListener);
         idRdit.addTextChangedListener(textWatcher);
         passwrdEdit.addTextChangedListener(passwordWatcher);
+        loginButton.setOnClickListener(onClickListener);
     }
 
     //点击事件
@@ -61,7 +63,8 @@ public class LonginActivity extends Activity {
             Intent intent;
             switch (view.getId()) {
                 case R.id.login_button:
-
+                    intent = new Intent(LonginActivity.this, MainActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.login_issue_buuton:
                     intent = new Intent(LonginActivity.this, SetPassword.class);
